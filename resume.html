@@ -29,6 +29,7 @@
     .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .45rem 1.5rem; margin: 0; padding: 0; list-style: none; }
     .nav-links a { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
     .nav-links a:hover, .nav-links [aria-current="page"] { color: var(--accent-light); }
+    .menu-toggle { display: none; }
     .hero { padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; color: white; text-align: center; background:
       radial-gradient(ellipse at 50% 48%, rgba(9, 23, 47, .88) 0%, rgba(18, 39, 74, .78) 17%, transparent 48%),
       radial-gradient(ellipse at 50% 58%, rgba(148, 23, 88, .9) 0%, transparent 50%),
@@ -70,8 +71,17 @@
     .site-footer { padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
     .site-footer p { margin: 0; }
     @media (max-width: 720px) {
-      .site-header { display: block; width: 100%; padding: 1rem 1.25rem; }
-      .nav-links { justify-content: flex-start; gap: .65rem 1rem; margin-top: .8rem; }
+      .site-header { display: flex; flex-wrap: wrap; width: 100%; padding: 1rem 1.25rem; }
+      .menu-toggle { display: inline-flex; width: 2.75rem; height: 2.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; margin-left: auto; padding: .55rem; border: 1px solid var(--accent); border-radius: 3px; color: var(--accent); background: transparent; cursor: pointer; }
+      .menu-toggle span { display: block; width: 1.2rem; height: 2px; background: currentColor; transition: transform .2s ease, opacity .2s ease; }
+      .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(7px) rotate(45deg); }
+      .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
+      .site-nav { display: none; width: 100%; }
+      .site-nav.is-open { display: block; }
+      .nav-links { display: grid; justify-content: stretch; gap: 0; margin-top: .65rem; padding-top: .4rem; border-top: 1px solid #d8cbd1; }
+      .nav-links li { border-bottom: 1px solid #e5dce0; }
+      .nav-links a { display: block; padding: .75rem .1rem; }
       .nav-links a { font-size: .68rem; }
       .hero { padding-inline: 1.15rem; }
       .contact-line { gap: .4rem .7rem; font-size: .88rem; }
@@ -100,7 +110,10 @@
   <a class="skip-link" href="#main">Skip to resume</a>
   <header class="site-header">
     <a class="wordmark" href="index.html">Divya Kandala</a>
-    <nav aria-label="Main navigation">
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="resume.html" aria-current="page">Resume</a></li>
@@ -251,5 +264,31 @@
   <footer class="site-footer">
     <p>© <span id="year">2026</span> Divya Kandala</p>
   </footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('#primary-navigation');
+
+    function setMenuOpen(isOpen) {
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      siteNav.classList.toggle('is-open', isOpen);
+    }
+
+    menuButton.addEventListener('click', () => {
+      setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+    siteNav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuButton.focus();
+      }
+    });
+    window.matchMedia('(min-width: 721px)').addEventListener('change', (event) => {
+      if (event.matches) setMenuOpen(false);
+    });
+  </script>
 </body>
 </html>
