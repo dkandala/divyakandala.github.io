@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Divya Kandala's UX and UI design resume, experience, projects, and skills.">
+  <title>Resume — Divya Kandala</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #292326;
+      --muted: #655d61;
+      --paper: #f4ecee;
+      --white: #fffafb;
+      --accent: #4c2545;
+      --accent-light: #743f68;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Trebuchet MS", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #f2b34c; outline-offset: 4px; }
+    .skip-link { position: absolute; top: -4rem; left: 1rem; z-index: 5; padding: .65rem 1rem; color: white; background: var(--ink); }
+    .skip-link:focus { top: 1rem; }
+    .site-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; width: min(100% - 3rem, 1120px); margin-inline: auto; padding-block: 1.2rem; }
+    .wordmark { color: #33251f; font-family: var(--serif); font-size: 1.1rem; font-weight: 700; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .45rem 1.5rem; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .nav-links a:hover, .nav-links [aria-current="page"] { color: var(--accent-light); }
+    .hero { padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; color: white; text-align: center; background:
+      radial-gradient(ellipse at 50% 48%, rgba(9, 23, 47, .88) 0%, rgba(18, 39, 74, .78) 17%, transparent 48%),
+      radial-gradient(ellipse at 50% 58%, rgba(148, 23, 88, .9) 0%, transparent 50%),
+      linear-gradient(155deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%); }
+    .hero-inner { width: min(100%, 920px); margin-inline: auto; }
+    h1, h2, h3, p { overflow-wrap: anywhere; }
+    .hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(2.8rem, 7vw, 5.3rem); font-style: italic; line-height: 1.08; }
+    .hero-subtitle { margin: .6rem 0 1.2rem; font-size: .84rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .contact-line { display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem .8rem; margin: 0; font-size: .93rem; font-weight: 700; }
+    .contact-line a { text-underline-offset: 3px; }
+    .summary { max-width: 760px; margin: 1.3rem auto 0; font-size: 1.05rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; margin-top: 1.7rem; }
+    .button { display: inline-block; padding: .75rem 1.1rem; border: 1px solid currentColor; border-radius: 2px; color: inherit; font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .button:hover { color: var(--accent); background: white; }
+    .resume-main { width: min(100% - 2rem, 1000px); margin: 2rem auto 4rem; }
+    .resume-section { margin-top: 1.25rem; padding: clamp(1.2rem, 3vw, 2rem); background: var(--white); box-shadow: 0 12px 35px rgba(55, 33, 43, .06); }
+    .resume-section h2 { margin: 0 0 1rem; padding-bottom: .65rem; border-bottom: 1px solid #b8aab1; font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.25rem); line-height: 1.15; }
+    .resume-section h3 { margin: 0; font-size: 1.1rem; line-height: 1.35; }
+    .resume-section p { margin: .35rem 0; }
+    .muted { color: var(--muted); }
+    .education-title, .entry-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .2rem 1rem; }
+    .education-title strong, .entry-date { font-weight: 800; }
+    .entry { padding-block: 1rem; border-bottom: 1px solid #e5dce0; }
+    .entry:first-of-type { padding-top: 0; }
+    .entry:last-child { padding-bottom: 0; border-bottom: 0; }
+    .organization { color: var(--muted); font-style: italic; }
+    .resume-section ul { margin: .55rem 0 0; padding-left: 1.25rem; }
+    .resume-section li { margin: .32rem 0; padding-left: .15rem; }
+    .detail-row { margin-top: .8rem !important; }
+    .skills-list { display: grid; gap: .65rem; }
+    .skills-list p { margin: 0; }
+    .skill-label { color: var(--accent); font-weight: 800; }
+    .leadership-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .leadership-card { padding: 1rem; background: #f8e2e5; }
+    .leadership-card:nth-child(2) { background: #eee3ed; }
+    .leadership-card:nth-child(3) { background: #e7eceb; }
+    .leadership-card h3 { font-family: var(--serif); }
+    .leadership-card ul { margin-top: .5rem; }
+    .site-footer { padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
+    .site-footer p { margin: 0; }
+    @media (max-width: 720px) {
+      .site-header { display: block; width: 100%; padding: 1rem 1.25rem; }
+      .nav-links { justify-content: flex-start; gap: .65rem 1rem; margin-top: .8rem; }
+      .nav-links a { font-size: .68rem; }
+      .hero { padding-inline: 1.15rem; }
+      .contact-line { gap: .4rem .7rem; font-size: .88rem; }
+      .leadership-list { grid-template-columns: 1fr; }
+      .resume-main { width: min(100% - 1.1rem, 1000px); margin-top: .75rem; }
+      .resume-section { padding: 1.15rem; }
+      .entry-heading { display: block; }
+      .entry-date { display: block; margin-top: .15rem; color: var(--accent); }
+    }
+    @media print {
+      :root { --paper: #fff; --white: #fff; --ink: #111; --muted: #333; }
+      body { background: #fff; font-size: 10pt; }
+      .site-header, .hero-actions, .site-footer, .skip-link { display: none; }
+      .hero { padding: 1rem 0; color: #111; background: #fff; }
+      .hero h1 { font-size: 26pt; }
+      .hero-subtitle { margin: .25rem 0; }
+      .summary { margin-top: .4rem; }
+      .resume-main { width: 100%; margin: .5rem auto; }
+      .resume-section { margin-top: .5rem; padding: .7rem; box-shadow: none; break-inside: avoid; }
+      a { text-decoration: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to resume</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">Divya Kandala</a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="resume.html" aria-current="page">Resume</a></li>
+        <li><a href="index.html#work">My Work</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="resume-title">
+      <div class="hero-inner">
+        <h1 id="resume-title">Divya Kandala</h1>
+        <p class="hero-subtitle">UX/UI Designer</p>
+        <p class="contact-line">
+          <span>Seattle, WA | Boulder, CO</span>
+          <a href="tel:+14253942540">425.394.2540</a>
+          <a href="mailto:dkandala@gmail.com">dkandala@gmail.com</a>
+          <a href="https://divyakandala.online" target="_blank" rel="noreferrer">Portfolio</a>
+          <a href="https://www.linkedin.com/in/divya-kandala" target="_blank" rel="noreferrer">LinkedIn</a>
+        </p>
+        <p class="summary">UX/UI Designer focused on creating clear, useful, and accessible digital experiences. Combines user research and data analysis with UX design to uncover user needs, identify opportunities for improvement, and develop intuitive design solutions.</p>
+        <div class="hero-actions">
+          <a class="button" href="assets/Kandala_Divya_Resume_2026.pdf" download>Download PDF</a>
+          <a class="button" href="#experience">View experience</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="resume-main">
+      <section class="resume-section" aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <div class="education-title">
+          <h3>University of Colorado Boulder</h3>
+          <strong>Graduation: May 2027</strong>
+        </div>
+        <p class="organization">Bachelor of Science, Information Science | Minor, Creative Technology and Design | Certificate, User Experience | GPA: 3.68</p>
+        <p><strong>Achievement:</strong> CMDI Dean’s Scholar Recipient, 2023 and 2025</p>
+        <p><strong>Relevant coursework:</strong> Designing Interactions, Information Ecosystems, Music as Information, User Experience Design 1 and 2, Community-Based Design, Communicative Information Visualization, Design Foundations, Tiny Games, Statistics, and Quantitative Reasoning.</p>
+      </section>
+
+      <section class="resume-section" aria-labelledby="abilities-title">
+        <h2 id="abilities-title">Professional Abilities</h2>
+        <div class="skills-list">
+          <p><span class="skill-label">Design and research:</span> UX design, wireframing and prototyping, usability testing, user flows, graphic design, user research methods, information architecture, data visualization, information visualization, product development, sentiment analysis, and trend analysis.</p>
+          <p><span class="skill-label">Tools:</span> Figma, FigJam, Adobe Creative Suite (Illustrator, Photoshop, InDesign), Microsoft Office Suite, Canva, Miro, Tableau, and Azure DevOps.</p>
+          <p><span class="skill-label">Programming languages:</span> Python; Python libraries (NumPy, Matplotlib, NLTK, Beautiful Soup, Seaborn); HTML, CSS, JavaScript, and SQL.</p>
+        </div>
+      </section>
+
+      <section class="resume-section" id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title">Work Experience</h2>
+        <article class="entry">
+          <div class="entry-heading">
+            <h3>CMDI Academic Peer Advisor</h3>
+            <span class="entry-date">Mar 2025 – Present</span>
+          </div>
+          <p class="organization">University of Colorado Boulder, College of Communication, Media, Design and Information | Boulder, CO</p>
+          <ul>
+            <li>Advised undergraduate students on 8+ areas of academic planning, including course selection, majors, minors, certificates, intra-university transfers, and study-abroad opportunities.</li>
+            <li>Analyzed individual student goals and academic requirements to develop personalized academic plans and actionable recommendations.</li>
+            <li>Collaborated with CMDI advising staff to ensure accurate and consistent communication of university policies and academic information.</li>
+            <li>Communicated complex academic information through individualized advising and problem-solving, supporting informed decision-making and student success.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-heading">
+            <h3>Information Specialist Intern</h3>
+            <span class="entry-date">May 2024 – Present</span>
+          </div>
+          <p class="organization">Cascade Kidney Specialists | Bellevue, WA</p>
+          <ul>
+            <li>Analyzed physician workflows and optimized system templates to align with practice requirements, supporting system-level process improvements across clinical workflows.</li>
+            <li>Designed and delivered comprehensive user guides and training sessions to support staff onboarding and technology adoption across clinical users.</li>
+            <li>Supported the migration of approximately 400 GB of patient and case history, using prompt engineering and ChatGPT Codex to develop and refine migration workflows, assist with data organization and reconciliation, and troubleshoot discrepancies while validating data integrity.</li>
+            <li>Took initiative in testing and validating system functionality, proactively identifying and resolving issues to minimize disruptions, improve system reliability, and enhance the end-user experience.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-heading">
+            <h3>User Experience Design Engineer Intern</h3>
+            <span class="entry-date">Jul 2025 – Sep 2025</span>
+          </div>
+          <p class="organization">CareDocs.AI | Redmond, WA</p>
+          <ul>
+            <li>Designed and iterated user-centered solutions in Figma, translating user testing feedback into high-fidelity mockups and refined interface designs that addressed user needs and improved the overall product experience.</li>
+            <li>Partnered with product managers and engineers to translate user needs and product requirements into implementation-ready design specifications and feasible interaction solutions.</li>
+            <li>Drove the transition from UX concepts to implementation-ready designs, establishing clear specifications and requirements while guiding product and engineering teams toward feasible, user-centered solutions.</li>
+            <li>Collaborated cross-functionally across product, engineering, and company leadership to communicate design rationale, incorporate feedback, and align product priorities with user needs.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="resume-section" aria-labelledby="projects-title">
+        <h2 id="projects-title">Project Work</h2>
+        <article class="entry">
+          <div class="entry-heading">
+            <h3>Dive Deeper Into the World of Music</h3>
+            <span class="entry-date">Jan 2026 – May 2026</span>
+          </div>
+          <ul>
+            <li>Analyzed audio properties of the Top 10 Spotify hits from 2024 using Python, exploring relationships between popularity, energy, tempo, and danceability and translating complex findings into accessible visual narratives.</li>
+            <li>Applied UX and information-visualization principles to design a hand-illustrated data zine in Adobe Illustrator, combining quantitative analysis with visual storytelling to make music data engaging and understandable.</li>
+          </ul>
+        </article>
+        <article class="entry">
+          <div class="entry-heading">
+            <h3>Man’s Best Wingman</h3>
+            <span class="entry-date">Jan 2024 – May 2024</span>
+          </div>
+          <ul>
+            <li>Designed a pet-centric social and dating app concept by conducting user research and translating user needs into product requirements, information architecture, and core interaction flows.</li>
+            <li>Created and iterated wireframes and prototypes to explore onboarding, discovery, and relationship-building experiences, incorporating design critique and user feedback.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="resume-section" aria-labelledby="leadership-title">
+        <h2 id="leadership-title">Leadership Experience</h2>
+        <div class="leadership-list">
+          <article class="leadership-card">
+            <h3>Phi Sigma Rho Sorority (Alpha Mu Chapter)</h3>
+            <p class="muted">Apr 2024 – Present</p>
+            <ul>
+              <li>Chapter Vice President</li>
+              <li>Vice President of Internal Affairs</li>
+              <li>Director of Diversity, Equity, and Inclusion</li>
+            </ul>
+          </article>
+          <article class="leadership-card">
+            <h3>Telugu Student Association</h3>
+            <p class="muted">Aug 2024 – Present</p>
+            <ul>
+              <li>President</li>
+              <li>Marketing Chair</li>
+            </ul>
+          </article>
+          <article class="leadership-card">
+            <h3>Boulder Bhole Bhangra Dance Team</h3>
+            <p class="muted">Aug 2024 – Present</p>
+            <ul>
+              <li>Choreography Captain</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="index.html">Return to home</a> · Divya Kandala</p>
+  </footer>
+</body>
+</html>
+
