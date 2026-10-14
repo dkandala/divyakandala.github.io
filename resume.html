@@ -45,6 +45,17 @@
     .button { display: inline-block; padding: .75rem 1.1rem; border: 1px solid currentColor; border-radius: 2px; color: inherit; font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
     .button:hover { color: var(--accent); background: white; }
     .resume-main { width: min(100% - 2rem, 1000px); margin: 2rem auto 4rem; }
+    .resume-filters { width: min(100% - 2rem, 1000px); margin: 1.5rem auto 0; padding: 1.2rem clamp(1rem, 3vw, 1.6rem); background: var(--white); box-shadow: 0 12px 35px rgba(55, 33, 43, .06); }
+    .filter-topline { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+    .filter-title { margin: 0; font-family: var(--serif); font-size: 1.35rem; }
+    .filter-count { margin: 0; color: var(--muted); font-size: .88rem; }
+    .filter-label { display: block; margin-top: .8rem; font-size: .85rem; font-weight: 700; }
+    .filter-search { width: 100%; margin-top: .8rem; padding: .75rem .85rem; border: 1px solid #b8aab1; border-radius: 2px; color: var(--ink); background: #fff; font: inherit; }
+    .filter-search:focus-visible, .filter-button:focus-visible { outline: 3px solid #f2b34c; outline-offset: 3px; }
+    .filter-buttons { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .85rem; }
+    .filter-button { padding: .5rem .8rem; border: 1px solid var(--accent); border-radius: 2px; color: var(--accent); background: transparent; font: 700 .72rem var(--sans); letter-spacing: .07em; text-transform: uppercase; cursor: pointer; }
+    .filter-button:hover, .filter-button[aria-pressed="true"] { color: #fff; background: var(--accent); }
+    [hidden] { display: none !important; }
     .resume-section { margin-top: 1.25rem; padding: clamp(1.2rem, 3vw, 2rem); background: var(--white); box-shadow: 0 12px 35px rgba(55, 33, 43, .06); }
     .resume-section h2 { margin: 0 0 1rem; padding-bottom: .65rem; border-bottom: 1px solid #b8aab1; font-family: var(--serif); font-size: clamp(1.7rem, 4vw, 2.25rem); line-height: 1.15; }
     .resume-section h3 { margin: 0; font-size: 1.1rem; line-height: 1.35; }
@@ -94,7 +105,7 @@
     @media print {
       :root { --paper: #fff; --white: #fff; --ink: #111; --muted: #333; }
       body { background: #fff; font-size: 10pt; }
-      .site-header, .hero-actions, .site-footer, .skip-link { display: none; }
+      .site-header, .hero-actions, .site-footer, .skip-link, .resume-filters { display: none; }
       .hero { padding: 1rem 0; color: #111; background: #fff; }
       .hero h1 { font-size: 26pt; }
       .hero-subtitle { margin: .25rem 0; }
@@ -126,11 +137,13 @@
   <main id="main">
     <section class="hero" aria-labelledby="resume-title">
       <div class="hero-inner">
-        <h1 id="resume-title">My Resume!</h1>
+        <h1 id="resume-title">Divya Kandala</h1>
         <p class="hero-subtitle">UX/UI Designer</p>
         <p class="contact-line">
           <span>Seattle, WA | Boulder, CO</span>
+          <a href="tel:+14253942540">425.394.2540</a>
           <a href="mailto:dkandala@gmail.com">dkandala@gmail.com</a>
+          <a href="https://divyakandala.online" target="_blank" rel="noreferrer">Portfolio</a>
           <a href="https://www.linkedin.com/in/divya-kandala" target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
         <p class="summary">UX/UI Designer focused on creating clear, useful, and accessible digital experiences. Combines user research and data analysis with UX design to uncover user needs, identify opportunities for improvement, and develop intuitive design solutions.</p>
@@ -141,30 +154,47 @@
       </div>
     </section>
 
+  <section class="resume-filters" aria-labelledby="filter-title">
+    <div class="filter-topline">
+      <h2 class="filter-title" id="filter-title">Explore my resume</h2>
+      <p class="filter-count" id="filter-count" role="status" aria-live="polite">Showing all resume details</p>
+    </div>
+    <label class="filter-label" for="resume-search">Search skills and experience</label>
+    <input class="filter-search" id="resume-search" type="search" placeholder="Search a skill, role, tool, or keyword…" autocomplete="off">
+    <div class="filter-buttons" role="group" aria-label="Filter resume by section">
+      <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-button" type="button" data-filter="education" aria-pressed="false">Education</button>
+      <button class="filter-button" type="button" data-filter="skills" aria-pressed="false">Skills</button>
+      <button class="filter-button" type="button" data-filter="experience" aria-pressed="false">Experience</button>
+      <button class="filter-button" type="button" data-filter="projects" aria-pressed="false">Projects</button>
+      <button class="filter-button" type="button" data-filter="leadership" aria-pressed="false">Leadership</button>
+    </div>
+  </section>
+
     <div class="resume-main">
-      <section class="resume-section" aria-labelledby="education-title">
+      <section class="resume-section" data-category="education" aria-labelledby="education-title">
         <h2 id="education-title">Education</h2>
-        <div class="education-title">
+        <div class="education-title" data-filter-item>
           <h3>University of Colorado Boulder</h3>
           <strong>Graduation: May 2027</strong>
         </div>
-        <p class="organization">Bachelor of Science, Information Science | Minor, Creative Technology and Design | Certificate, User Experience | GPA: 3.68</p>
-        <p><strong>Achievement:</strong> CMDI Dean’s Scholar Recipient, 2023 and 2025</p>
-        <p><strong>Relevant coursework:</strong> Designing Interactions, Information Ecosystems, Music as Information, User Experience Design 1 and 2, Community-Based Design, Communicative Information Visualization, Design Foundations, Tiny Games, Statistics, and Quantitative Reasoning.</p>
+        <p class="organization" data-filter-item>Bachelor of Science, Information Science | Minor, Creative Technology and Design | Certificate, User Experience | GPA: 3.68</p>
+        <p data-filter-item><strong>Achievement:</strong> CMDI Dean’s Scholar Recipient, 2023 and 2025</p>
+        <p data-filter-item><strong>Relevant coursework:</strong> Designing Interactions, Information Ecosystems, Music as Information, User Experience Design 1 and 2, Community-Based Design, Communicative Information Visualization, Design Foundations, Tiny Games, Statistics, and Quantitative Reasoning.</p>
       </section>
 
-      <section class="resume-section" aria-labelledby="abilities-title">
+      <section class="resume-section" data-category="skills" aria-labelledby="abilities-title">
         <h2 id="abilities-title">Professional Abilities</h2>
         <div class="skills-list">
-          <p><span class="skill-label">Design and research:</span> UX design, wireframing and prototyping, usability testing, user flows, graphic design, user research methods, information architecture, data visualization, information visualization, product development, sentiment analysis, and trend analysis.</p>
-          <p><span class="skill-label">Tools:</span> Figma, FigJam, Adobe Creative Suite (Illustrator, Photoshop, InDesign), Microsoft Office Suite, Canva, Miro, Tableau, and Azure DevOps.</p>
-          <p><span class="skill-label">Programming languages:</span> Python; Python libraries (NumPy, Matplotlib, NLTK, Beautiful Soup, Seaborn); HTML, CSS, JavaScript, and SQL.</p>
+          <p data-filter-item><span class="skill-label">Design and research:</span> UX design, wireframing and prototyping, usability testing, user flows, graphic design, user research methods, information architecture, data visualization, information visualization, product development, sentiment analysis, and trend analysis.</p>
+          <p data-filter-item><span class="skill-label">Tools:</span> Figma, FigJam, Adobe Creative Suite (Illustrator, Photoshop, InDesign), Microsoft Office Suite, Canva, Miro, Tableau, and Azure DevOps.</p>
+          <p data-filter-item><span class="skill-label">Programming languages:</span> Python; Python libraries (NumPy, Matplotlib, NLTK, Beautiful Soup, Seaborn); HTML, CSS, JavaScript, and SQL.</p>
         </div>
       </section>
 
-      <section class="resume-section" id="experience" aria-labelledby="experience-title">
+      <section class="resume-section" id="experience" data-category="experience" aria-labelledby="experience-title">
         <h2 id="experience-title">Work Experience</h2>
-        <article class="entry">
+        <article class="entry" data-filter-item>
           <div class="entry-heading">
             <h3>CMDI Academic Peer Advisor</h3>
             <span class="entry-date">Mar 2025 – Present</span>
@@ -177,7 +207,7 @@
             <li>Communicated complex academic information through individualized advising and problem-solving, supporting informed decision-making and student success.</li>
           </ul>
         </article>
-        <article class="entry">
+        <article class="entry" data-filter-item>
           <div class="entry-heading">
             <h3>Information Specialist Intern</h3>
             <span class="entry-date">May 2024 – Present</span>
@@ -190,7 +220,7 @@
             <li>Took initiative in testing and validating system functionality, proactively identifying and resolving issues to minimize disruptions, improve system reliability, and enhance the end-user experience.</li>
           </ul>
         </article>
-        <article class="entry">
+        <article class="entry" data-filter-item>
           <div class="entry-heading">
             <h3>User Experience Design Engineer Intern</h3>
             <span class="entry-date">Jul 2025 – Sep 2025</span>
@@ -205,9 +235,9 @@
         </article>
       </section>
 
-      <section class="resume-section" aria-labelledby="projects-title">
+      <section class="resume-section" data-category="projects" aria-labelledby="projects-title">
         <h2 id="projects-title">Project Work</h2>
-        <article class="entry">
+        <article class="entry" data-filter-item>
           <div class="entry-heading">
             <h3>Dive Deeper Into the World of Music</h3>
             <span class="entry-date">Jan 2026 – May 2026</span>
@@ -217,7 +247,7 @@
             <li>Applied UX and information-visualization principles to design a hand-illustrated data zine in Adobe Illustrator, combining quantitative analysis with visual storytelling to make music data engaging and understandable.</li>
           </ul>
         </article>
-        <article class="entry">
+        <article class="entry" data-filter-item>
           <div class="entry-heading">
             <h3>Man’s Best Wingman</h3>
             <span class="entry-date">Jan 2024 – May 2024</span>
@@ -229,10 +259,10 @@
         </article>
       </section>
 
-      <section class="resume-section" aria-labelledby="leadership-title">
+      <section class="resume-section" data-category="leadership" aria-labelledby="leadership-title">
         <h2 id="leadership-title">Leadership Experience</h2>
         <div class="leadership-list">
-          <article class="leadership-card">
+          <article class="leadership-card" data-filter-item>
             <h3>Phi Sigma Rho Sorority (Alpha Mu Chapter)</h3>
             <p class="muted">Apr 2024 – Present</p>
             <ul>
@@ -241,7 +271,7 @@
               <li>Director of Diversity, Equity, and Inclusion</li>
             </ul>
           </article>
-          <article class="leadership-card">
+          <article class="leadership-card" data-filter-item>
             <h3>Telugu Student Association</h3>
             <p class="muted">Aug 2024 – Present</p>
             <ul>
@@ -249,7 +279,7 @@
               <li>Marketing Chair</li>
             </ul>
           </article>
-          <article class="leadership-card">
+          <article class="leadership-card" data-filter-item>
             <h3>Boulder Bhole Bhangra Dance Team</h3>
             <p class="muted">Aug 2024 – Present</p>
             <ul>
@@ -261,12 +291,56 @@
     </div>
   </main>
 
-<footer class="site-footer">
-  <h2>Chat With Me!</h2>
-  <p>Email | <a href="mailto:dkandala@gmail.com">dkandala@gmail.com</a> &nbsp; Location | Seattle × Boulder</p>
-  <a class="linkedin-button" href="https://www.linkedin.com/in/divya-kandala-714947168">LINKEDIN</a>
-</footer>S
+  <footer class="site-footer">
+    <p><a href="index.html">Return to home</a> · Divya Kandala</p>
+  </footer>
   <script>
+    const resumeSearch = document.querySelector('#resume-search');
+    const categoryButtons = [...document.querySelectorAll('.filter-button')];
+    const resumeSections = [...document.querySelectorAll('.resume-section')];
+    const filterCount = document.querySelector('#filter-count');
+    let activeCategory = 'all';
+
+    function filterResume() {
+      const query = resumeSearch.value.trim().toLocaleLowerCase();
+      let visibleItems = 0;
+
+      resumeSections.forEach((section) => {
+        const categoryMatches = activeCategory === 'all' || section.dataset.category === activeCategory;
+        const items = [...section.querySelectorAll('[data-filter-item]')];
+        let sectionHasMatch = false;
+
+        items.forEach((item) => {
+          const itemMatches = !query || item.textContent.toLocaleLowerCase().includes(query);
+          item.hidden = !categoryMatches || !itemMatches;
+          if (!item.hidden) {
+            sectionHasMatch = true;
+            visibleItems += 1;
+          }
+        });
+
+        section.hidden = !categoryMatches || !sectionHasMatch;
+      });
+
+      if (query) {
+        filterCount.textContent = visibleItems === 1 ? '1 matching resume detail' : `${visibleItems} matching resume details`;
+      } else if (activeCategory === 'all') {
+        filterCount.textContent = 'Showing all resume details';
+      } else {
+        const activeButton = categoryButtons.find((button) => button.dataset.filter === activeCategory);
+        filterCount.textContent = `Showing ${visibleItems} ${activeButton.textContent.toLowerCase()} details`;
+      }
+    }
+
+    categoryButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.filter;
+        categoryButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        filterResume();
+      });
+    });
+    resumeSearch.addEventListener('input', filterResume);
+
     const menuButton = document.querySelector('.menu-toggle');
     const siteNav = document.querySelector('#primary-navigation');
 
@@ -294,3 +368,4 @@
   </script>
 </body>
 </html>
+
