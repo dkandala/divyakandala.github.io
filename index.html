@@ -81,11 +81,11 @@
     .nav-links [aria-current="page"] {
       color: #fff;
       background-color: var(--accent);
-
       text-decoration: underline;
       text-underline-offset: 4px;
     }
     .menu-toggle { display: none; }
+    .hero { padding-top: 5rem; }
     .hero {
       display: grid;
       min-height: min(760px, 100svh);
@@ -231,19 +231,108 @@
       html { scroll-behavior: auto; }
       *, *::before, *::after { transition-duration: .01ms !important; }
     }
-  </style>
+      /* Shared site header and navigation */
+    .site-header {
+      position: relative;
+      inset: auto;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      width: 100%;
+      min-height: 7.8rem;
+      margin: 0;
+      padding: 1.4rem clamp(1.25rem, 3vw, 2.25rem);
+      background: linear-gradient(110deg, #c56d22 0%, #b44a53 55%, #793b74 100%);
+    }
+    .wordmark {
+      flex-shrink: 0;
+      color: #291d1d;
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: .5rem clamp(1rem, 2.2vw, 2.4rem);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      display: inline-block;
+      padding: .35rem .1rem;
+      color: #241c20;
+      background: transparent;
+      font-size: .84rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .nav-links [aria-current="page"] {
+      color: #fff;
+      background: transparent;
+      text-decoration: underline;
+      text-underline-offset: .4rem;
+    }
+    .menu-toggle { display: none; }
+    @media (max-width: 760px) {
+      .site-header { min-height: 0; gap: 1rem; padding: 1rem 1.25rem; }
+      .menu-toggle {
+        display: inline-flex;
+        width: 2.75rem;
+        height: 2.75rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-left: auto;
+        padding: .55rem;
+        border: 1px solid #291d1d;
+        border-radius: 3px;
+        color: #291d1d;
+        background: transparent;
+        cursor: pointer;
+      }
+      .menu-toggle:hover, .menu-toggle:focus-visible { color: #fff; background: #342632; }
+      .menu-toggle span { display: block; width: 1.2rem; height: 2px; background: currentColor; }
+      .site-nav { display: none; width: 100%; }
+      .site-nav.is-open { display: block; }
+      .nav-links {
+        display: grid;
+        justify-content: stretch;
+        gap: 0;
+        margin: 0;
+        padding: .6rem 0 0;
+        border-top: 1px solid rgba(41, 29, 29, .45);
+      }
+      .nav-links li { border: 0; }
+      .nav-links a { display: block; padding: .7rem 0; font-size: .72rem; }
+    }
+    .hero { padding-top: 5rem; }
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="wordmark" href="#home">Divya Kandala</a>
+    <a class="wordmark" href="index.html" aria-current="page">Divya Kandala</a>
     <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
       <span></span><span></span><span></span>
     </button>
     <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
       <ul class="nav-links">
-        <li><a href="#work">My Work</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="index.html#work">My Work</a></li>
+        <li><a href="index.html#about">About</a></li>
         <li><a href="resume.html">Resume</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -257,7 +346,7 @@
         <p class="hero-kicker">Designer | Leader | Artist</p>
         <p class="hero-intro">An enthusiastic artist and designer with a foundation in programming. I’m a passionate human-computer interactions developer who creates accessible designs.</p>
         <div class="hero-actions">
-          <a class="button button-light" href="project-work.html">Explore my work</a>
+          <a class="button button-light" href="#work">Explore my work</a>
           <a class="button button-light" href="contact.html">Get in touch</a>
         </div>
       </div>
@@ -303,15 +392,23 @@
       </div>
     </section>
 
-
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="section-inner">
+        <h2 class="section-heading" id="contact-title">Chat With Me!</h2>
+        <p class="section-lede">Have an idea to share, a project in mind, or just want to connect? My inbox is open.</p>
+        <div class="contact-links">
+          <a href="mailto:dkandala@gmail.com">Email Divya</a>
+          <a href="https://www.linkedin.com/in/divya-kandala-714947168" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="contact.html">Contact page</a>
+        </div>
+        <p>Seattle × Boulder</p>
+      </div>
+    </section>
   </main>
 
- <footer class="site-footer">
-  <h2>Chat With Me!</h2>
-  <p>Email | <a href="mailto:dkandala@gmail.com">dkandala@gmail.com</a> &nbsp; Location | Seattle × Boulder</p>
-  <a class="linkedin-button" href="https://www.linkedin.com/in/divya-kandala-714947168">LINKEDIN</a>
-</footer>
-
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Divya Kandala</p>
+  </footer>
   <script>
     const menuButton = document.querySelector('.menu-toggle');
     const siteNav = document.querySelector('#primary-navigation');
@@ -340,4 +437,5 @@
   </script>
 </body>
 </html>
+
 
