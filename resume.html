@@ -174,13 +174,13 @@
       transition: color .2s ease;
     }
     .nav-links a:hover,
-    .nav-links a:focus-visible {
+    .nav-links a:focus-visible,
+    .nav-links [aria-current="page"] {
       color: #fff;
       background: transparent;
       text-decoration: underline;
       text-underline-offset: .4rem;
     }
-    .nav-links [aria-current="page"] { color: #241c20; background: transparent; text-decoration: none; }
     .menu-toggle { display: none; }
     @media (max-width: 760px) {
       .site-header { min-height: 0; gap: 1rem; padding: 1rem 1.25rem; }
