@@ -67,7 +67,14 @@
       .menu-toggle:hover, .menu-toggle:focus-visible { color: #fff; background: #342632; }
       .menu-toggle span { display: block; width: 1.2rem; height: 2px; background: currentColor; }
       .site-nav { display: none; width: 100%; }
-      .site-nav.is-open { display: block; }
+      .site-nav.is-open {
+        display: block;
+        padding: .45rem 1rem .7rem;
+        border: 1px solid rgba(41, 29, 29, .14);
+        border-radius: 8px;
+        background: var(--white);
+        box-shadow: 0 14px 30px rgba(41, 29, 29, .16);
+      }
       .nav-links { display: grid; justify-content: stretch; gap: 0; margin: 0; padding: .6rem 0 0; border-top: 1px solid rgba(41,29,29,.45); }
       .nav-links li { border: 0; }
       .nav-links a { display: block; padding: .7rem 0; font-size: .72rem; }
