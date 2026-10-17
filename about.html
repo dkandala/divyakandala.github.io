@@ -1,11 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Meet Divya Kandala: an artist, designer, and developer exploring the intersection of creativity and technology.">
+  <title>About — Divya Kandala</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #292326;
+      --muted: #655d61;
+      --paper: #f4ecee;
+      --white: #fffafb;
+      --accent: #4c2545;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Trebuchet MS", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #f2b34c; outline-offset: 4px; }
+    .skip-link { position: absolute; top: -4rem; left: 1rem; z-index: 5; padding: .65rem 1rem; color: #fff; background: var(--ink); }
+    .skip-link:focus { top: 1rem; }
+    .site-header {
+      position: absolute; inset: 0 0 auto; z-index: 2; display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; width: 100%; min-height: 7.8rem; margin: 0; padding: 1.4rem clamp(1.25rem, 3vw, 2.25rem); background: transparent;
+    }
+    .wordmark { flex-shrink: 0; color: #291d1d; font-family: var(--serif); font-size: clamp(1.25rem, 2vw, 1.55rem); font-weight: 700; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem clamp(1rem, 2.2vw, 2.4rem); margin: 0; padding: 0; list-style: none; }
+    .nav-links a { display: inline-block; padding: .35rem .1rem; color: #241c20; font-size: .84rem; font-weight: 800; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible, .nav-links [aria-current="page"] { color: #fff; background: transparent; text-decoration: underline; text-underline-offset: .4rem; }
+    .menu-toggle { display: none; }
+    .hero { display: grid; min-height: min(440px, 70svh); place-items: center; padding: 9rem 1.5rem 4rem; color: #fff; text-align: center; background:
+      radial-gradient(ellipse at 50% 45%, rgba(9, 23, 47, .88) 0%, rgba(18, 39, 74, .78) 17%, transparent 45%),
+      radial-gradient(ellipse at 50% 58%, rgba(148, 23, 88, .9) 0%, transparent 48%),
+      linear-gradient(155deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%); }
+    .hero h1 { margin: 0; font-family: var(--serif); font-size: clamp(3.2rem, 8vw, 5.8rem); font-style: italic; letter-spacing: -.04em; line-height: 1.05; }
+    .hero p { margin: 1rem auto 0; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 700; letter-spacing: .08em; }
+    .section { padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; }
+    .section-inner { width: min(100%, 1080px); margin-inline: auto; }
+    .story { background: var(--white); }
+    .section-heading { margin: 0; font-family: var(--serif); font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.1; text-align: center; }
+    .story-copy { max-width: 800px; margin: 1.5rem auto 0; color: var(--muted); font-size: 1.05rem; }
+    .story-copy p { margin: 0 0 1.1rem; }
+    .story-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; margin-top: 2rem; }
+    .button { display: inline-block; min-width: 150px; padding: .8rem 1.1rem; border: 1px solid var(--accent); color: var(--accent); font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-align: center; text-decoration: none; text-transform: uppercase; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+    .button:hover { color: #fff; background: var(--accent); transform: translateY(-2px); }
+    .collage-section:nth-of-type(even) { background: #f8e2e5; }
+    .collage-intro { max-width: 680px; margin: 1rem auto 0; color: var(--muted); text-align: center; }
+    .photo-collage { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 150px; gap: .9rem; margin-top: 2rem; }
+    .photo-slot { display: grid; place-items: center; min-height: 150px; padding: 1rem; color: #fff; background: linear-gradient(145deg, #b44a53, #793b74 55%, #173c43); text-align: center; }
+    a.photo-slot { text-decoration: none; }
+    .photo-collage img.photo-slot { width: 100%; height: 100%; padding: 0; object-fit: cover; }
+    .photo-slot:nth-child(4n + 2) { background: linear-gradient(145deg, #c56d22, #b44a53 60%, #793b74); }
+    .photo-slot:nth-child(4n + 3) { background: linear-gradient(145deg, #173c43, #4c2545 60%, #b44a53); }
+    .photo-slot:nth-child(4n + 4) { background: linear-gradient(145deg, #793b74, #c56d22); }
+    .photo-slot span { padding: .5rem .7rem; border: 1px solid rgba(255,255,255,.75); font-size: .75rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .photo-slot:nth-child(5n + 1) { grid-row: span 2; }
+    .photo-slot:nth-child(5n + 3) { grid-column: span 2; }
+    .site-footer { padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
+    .site-footer p { margin: 0; }
+    @media (max-width: 760px) {
+      .site-header { position: absolute; inset: 0 0 auto; min-height: 0; gap: 1rem; padding: 1rem 1.25rem; }
+      .menu-toggle { display: inline-flex; width: 2.75rem; height: 2.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; margin-left: auto; padding: .55rem; border: 1px solid #291d1d; border-radius: 3px; color: #291d1d; background: transparent; cursor: pointer; }
+      .menu-toggle:hover, .menu-toggle:focus-visible { color: #fff; background: #342632; }
+      .menu-toggle span { display: block; width: 1.2rem; height: 2px; background: currentColor; }
+      .site-nav { display: none; width: 100%; }
+      .site-nav.is-open { display: block; }
+      .nav-links { display: grid; justify-content: stretch; gap: 0; margin: 0; padding: .6rem 0 0; border-top: 1px solid rgba(41,29,29,.45); }
+      .nav-links li { border: 0; }
+      .nav-links a { display: block; padding: .7rem 0; font-size: .72rem; }
+      .hero { min-height: 360px; padding: 8rem 1.25rem 3rem; }
+      .photo-collage { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 125px; gap: .65rem; }
+      .photo-slot { min-height: 125px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
 </head>
 <body>
-    
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">Divya Kandala</a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
+    <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="index.html#work">My Work</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="about-title">
+      <div><h1 id="about-title">Who Am I?</h1><p>Artist · Designer · Developer</p></div>
+    </section>
+    <section class="section story" aria-labelledby="story-title">
+      <div class="section-inner">
+        <h2 class="section-heading" id="story-title">Art, Technology, and Human Experience</h2>
+        <div class="story-copy">
+          <p>Growing up, I was always drawn to creating through various mediums: drawing, painting, or hands-on projects. I took art classes outside of school and consistently chose art over other electives. My love for design became a defining part of who I am.</p>
+          <p>While art was my starting point, I became increasingly intrigued by the intersection of creativity and technology. This led me to explore Information Science, where I discovered my passion for coding, front-end development, and user experience design. From crafting meeting posts as Marketing Chair of the Telugu Student Association to prototyping apps in Figma during my interaction design class, I found joy in blending aesthetics with functionality.</p>
+          <p>Over time, I’ve expanded my skills to include Python programming, data ecosystems, and user research. I aspire to design intuitive, accessible, and impactful digital experiences that enhance how we interact with technology. I’m looking to pursue a User Experience Designer or Research role where I can continue to grow professionally.</p>
+          <p>Take a look at my portfolio to see how I bring ideas to life at the intersection of art and technology.</p>
+        </div>
+        <div class="story-actions"><a class="button" href="index.html#work">View my work</a><a class="button" href="contact.html">Get in touch</a></div>
+      </div>
+    </section>
+    <!-- Replace a photo-slot block with a linked image: <a class="photo-slot" href="https://photo-page-url"><img class="photo-slot" src="https://image-file-url" alt="A short description of the photo"></a> -->
+    <section class="section collage-section" aria-labelledby="creative-collage-title">
+      <div class="section-inner">
+        <h2 class="section-heading" id="creative-collage-title">A Creative Life</h2>
+        <p class="collage-intro">A place for the art, ideas, and little projects that keep me creating. Replace any tile with a link to one of your photos.</p>
+        <div class="photo-collage" aria-label="Creative life photo collage placeholders">
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: art and making"><span>Art &amp; making</span></div>
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: design process"><span>Design process</span></div>
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: creative projects"><span>Creative projects</span></div>
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: favorite details"><span>Favorite details</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="section collage-section" aria-labelledby="life-collage-title">
+      <div class="section-inner">
+        <h2 class="section-heading" id="life-collage-title">Life Beyond the Screen</h2>
+        <p class="collage-intro">Moments with the people, places, and communities that make life meaningful.</p>
+        <div class="photo-collage" aria-label="Life beyond the screen photo collage placeholders">
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: dance and performance"><span>Dance &amp; performance</span></div>
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: community"><span>Community</span></div>
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: adventures"><span>Adventures</span></div>
+          <div class="photo-slot" role="img" aria-label="Photo placeholder: everyday joys"><span>Everyday joys</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© <span id="year">2026</span> Divya Kandala</p></footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('#primary-navigation');
+    function setMenuOpen(isOpen) {
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      siteNav.classList.toggle('is-open', isOpen);
+    }
+    menuButton.addEventListener('click', () => setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+    siteNav.addEventListener('click', (event) => { if (event.target.closest('a')) setMenuOpen(false); });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { setMenuOpen(false); menuButton.focus(); }
+    });
+    window.matchMedia('(min-width: 761px)').addEventListener('change', (event) => { if (event.matches) setMenuOpen(false); });
+  </script>
 </body>
 </html>
+
