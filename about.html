@@ -60,8 +60,8 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%); }
     .photo-slot span { padding: .5rem .7rem; border: 1px solid rgba(255,255,255,.75); font-size: .75rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
     .photo-slot:nth-child(5n + 1) { grid-row: span 2; }
     .photo-slot:nth-child(5n + 3) { grid-column: span 2; }
-    .site-footer { padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
-    .site-footer p { margin: 0; }
+    .site-footer { display: flex; flex-direction: column; align-items: center; padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
+    .site-footer p { width: 100%; margin: 0; text-align: center; }
     @media (max-width: 760px) {
       .site-header { position: absolute; inset: 0 0 auto; min-height: 0; gap: 1rem; padding: 1rem 1.25rem; }
       .menu-toggle { display: inline-flex; width: 2.75rem; height: 2.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; margin-left: auto; padding: .55rem; border: 1px solid #291d1d; border-radius: 3px; color: #291d1d; background: transparent; cursor: pointer; }
