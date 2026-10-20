@@ -204,12 +204,30 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
     .about-copy p { margin: 0 0 1rem; }
     .about-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 1.8rem; }
     .contact { color: #fff; background: #342632; text-align: center; }
-    .contact .section-lede { color: #eadfe8; }
+.contact .section-lede {
+  width: min(100%, 700px);
+  margin-inline: auto;
+  color: #eadfe8;
+  text-align: center;
+}
     .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.3rem; margin-top: 1.8rem; }
     .contact-links a { font-weight: 700; text-underline-offset: 4px; }
-    .site-footer { padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
-    .site-footer p { margin: 0; }
+    .site-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+  color: #ddd0da;
+  background: #342632;
+  font-size: .8rem;
+  text-align: center;
+}
 
+.site-footer p {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
     @media (max-width: 760px) {
       .site-header { position: relative; display: flex; flex-wrap: wrap; width: 100%; padding: 1rem 1.25rem; background: #f4ecee; }
       .menu-toggle { display: inline-flex; width: 2.75rem; height: 2.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; margin-left: auto; padding: .55rem; border: 1px solid var(--accent); border-radius: 3px; color: var(--accent); background: transparent; cursor: pointer; }
@@ -467,8 +485,9 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
 
   <footer class="site-footer section contact" id="contact" aria-labelledby="contact-title">
     <div class="section-inner">
-      <h2 class="section-heading" id="contact-title">Chat With Me!</h2>
-      <p class="section-lede">Have an idea to share, a project in mind, or just want to connect? My inbox is open.</p>
+      <h3 class="section-heading" id="contact-title">Chat With Me!</h3>
+      <p class="section-lede" style="text-align:center">Have an idea to share, a project in mind, or just want to connect? My inbox is open.</p>
+    </div>
       <div class="contact-links">
         <a href="mailto:dkandala@gmail.com">Email Divya</a>
         <a href="https://www.linkedin.com/in/divya-kandala-714947168" target="_blank" rel="noreferrer">LinkedIn</a>
