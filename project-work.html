@@ -474,6 +474,7 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
       color: var(--accent);
       background: #fff;
     }
+    .project-hero { min-height: min(760px, 70svh); }
     .project-section { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
     .project-section:nth-of-type(even) { background: #f8e2e5; }
     .project-grid {
@@ -521,6 +522,7 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
     }
     .project-card .text-link { margin-top: auto; }
     @media (max-width: 760px) {
+      .project-hero { min-height: 82svh; }
       .project-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-auto-rows: minmax(125px, auto);
@@ -552,7 +554,7 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
     </nav>
   </header>
   <main id="main">
-    <section class="hero" aria-labelledby="project-title">
+    <section class="hero project-hero" aria-labelledby="project-title">
       <div class="hero-content">
         <h1 id="project-title">Project Work</h1>
         <p class="hero-intro">Get a glimpse of my project work.</p>
