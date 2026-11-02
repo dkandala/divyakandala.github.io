@@ -418,23 +418,33 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
       content: "";
       position: absolute;
       z-index: 0;
-      inset: -12%;
+      inset: -18%;
       pointer-events: none;
       background-image:
-        radial-gradient(ellipse 42% 48% at var(--pointer-x, 50%) var(--pointer-y, 45%), rgba(255, 188, 120, .86) 0%, transparent 76%),
-        radial-gradient(ellipse 48% 58% at 18% 78%, rgba(166, 48, 137, .9) 0%, transparent 74%),
-        radial-gradient(ellipse 44% 54% at 86% 20%, rgba(35, 115, 133, .92) 0%, transparent 74%),
+        radial-gradient(ellipse 42% 48% at var(--pointer-x, 50%) var(--pointer-y, 45%), rgba(197, 109, 34, .9) 0%, transparent 76%),
+        radial-gradient(ellipse 48% 58% at 18% 78%, rgba(121, 59, 116, .92) 0%, transparent 74%),
+        radial-gradient(ellipse 44% 54% at 86% 20%, rgba(23, 60, 67, .96) 0%, transparent 74%),
         linear-gradient(135deg, #c56d22, #b44a53 38%, #793b74 70%, #173c43);
       background-size: 112% 112%, 120% 120%, 118% 118%, 100% 100%;
       background-position: 50% 45%, 18% 78%, 86% 20%, center;
       transform: translate3d(var(--pointer-shift-x, 0px), var(--pointer-shift-y, 0px), 0) scale(1.04);
       transition: transform .9s cubic-bezier(.2, .7, .2, 1);
-      animation: gradient-drift 22s ease-in-out infinite alternate;
+      filter: blur(18px) saturate(1.08);\n      animation: gradient-drift 72s ease-in-out infinite alternate;
     }
     .hero-content { position: relative; z-index: 1; }
     @keyframes gradient-drift {
-      from { background-size: 112% 112%, 120% 120%, 118% 118%, 100% 100%; }
-      to { background-size: 124% 124%, 110% 110%, 128% 128%, 100% 100%; }
+      0% {
+        background-size: 112% 112%, 120% 120%, 118% 118%, 100% 100%;
+        background-position: 50% 45%, 18% 78%, 86% 20%, center;
+      }
+      50% {
+        background-size: 124% 118%, 112% 126%, 128% 112%, 100% 100%;
+        background-position: 62% 58%, 36% 62%, 72% 38%, center;
+      }
+      100% {
+        background-size: 118% 126%, 128% 112%, 112% 126%, 100% 100%;
+        background-position: 38% 34%, 54% 84%, 92% 8%, center;
+      }
     }
     @media (prefers-reduced-motion: reduce) {
       .hero::before { animation: none; transition: none; }
