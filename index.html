@@ -430,21 +430,19 @@ linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%);
       transform: scale(1.04);
 
       filter: blur(18px) saturate(1.08);
-      animation: gradient-drift 12s ease-in-out infinite alternate;
+      animation: gradient-bloom 12s cubic-bezier(.45, 0, .55, 1) infinite;
     }
     .hero-content { position: relative; z-index: 1; }
-    @keyframes gradient-drift {
-      0% {
+    @keyframes gradient-bloom {
+      0%, 100% {
         background-size: 112% 112%, 120% 120%, 118% 118%, 100% 100%;
         background-position: 50% 45%, 18% 78%, 86% 20%, center;
+        transform: scale(1.04);
       }
-      50% {
-        background-size: 124% 118%, 112% 126%, 128% 112%, 100% 100%;
-        background-position: 62% 58%, 36% 62%, 72% 38%, center;
-      }
-      100% {
-        background-size: 118% 126%, 128% 112%, 112% 126%, 100% 100%;
-        background-position: 38% 34%, 54% 84%, 92% 8%, center;
+      44%, 56% {
+        background-size: 150% 148%, 146% 152%, 152% 146%, 100% 100%;
+        background-position: 52% 50%, 48% 54%, 56% 46%, center;
+        transform: scale(1.12);
       }
     }
     @media (prefers-reduced-motion: reduce) {
