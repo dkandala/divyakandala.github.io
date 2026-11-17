@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Colorado Symphony Classics 2026 poster mailer project by Divya Kandala.">
+  <title>Colorado Symphony Classics 2026 — Divya Kandala</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #292326;
+      --muted: #655d61;
+      --paper: #f4ecee;
+      --white: #fffafb;
+      --accent: #4c2545;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Trebuchet MS", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #f2b34c; outline-offset: 4px; }
+    .skip-link { position: absolute; top: -4rem; left: 1rem; z-index: 5; padding: .65rem 1rem; color: #fff; background: var(--ink); }
+    .skip-link:focus { top: 1rem; }
+    .site-header { position: absolute; inset: 0 0 auto; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 2rem; width: 100%; min-height: 7.8rem; margin: 0; padding: 1.4rem clamp(1.25rem, 3vw, 2.25rem); background: transparent; }
+    .wordmark { flex-shrink: 0; color: #fff; font-family: var(--serif); font-size: clamp(1.25rem, 2vw, 1.55rem); font-weight: 700; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
+    .nav-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .5rem clamp(1rem, 2.2vw, 2.4rem); margin: 0; padding: 0; list-style: none; }
+    .nav-links a { display: inline-block; padding: .35rem .1rem; color: #fff; font-size: .84rem; font-weight: 800; letter-spacing: .13em; text-decoration: none; text-transform: uppercase; }
+    .nav-links a:hover, .nav-links a:focus-visible, .nav-links [aria-current="page"] { text-decoration: underline; text-underline-offset: .4rem; }
+    .menu-toggle { display: none; }
+    .hero { display: grid; min-height: min(520px, 78svh); place-items: center; padding: 9rem 1.5rem 4rem; color: #fff; text-align: center; background:
+      radial-gradient(ellipse 105% 66% at 88% -18%, rgba(9, 23, 47, .88) 0%, rgba(18, 39, 74, .78) 17%, transparent 45%),
+      radial-gradient(ellipse 115% 72% at 12% 118%, rgba(148, 23, 88, .9) 0%, transparent 48%),
+      radial-gradient(ellipse 92% 56% at 50% 125%, rgba(148, 23, 88, .9) 0%, transparent 48%),
+      linear-gradient(165deg, #c56d22 0%, #b44a53 36%, #793b74 67%, #173c43 100%); }
+    .hero-content { width: min(100%, 900px); }
+    .hero-kicker { margin: 0 0 1rem; font-size: .78rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    h1 { margin: 0; font-family: var(--serif); font-size: clamp(2.8rem, 8vw, 5.6rem); font-style: italic; letter-spacing: -.04em; line-height: 1.05; }
+    .hero p:last-child { margin: 1.2rem auto 0; font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 700; letter-spacing: .08em; }
+    .section { padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; }
+    .section-inner { width: min(100%, 1080px); margin-inline: auto; }
+    .project-intro { background: var(--white); }
+    .section-heading { margin: 0; font-family: var(--serif); font-size: clamp(2.1rem, 5vw, 3.2rem); line-height: 1.1; text-align: center; }
+    .intro-copy { max-width: 780px; margin: 1.3rem auto 0; color: var(--muted); font-size: 1.05rem; text-align: center; }
+    .intro-copy p { margin: 0 0 1rem; }
+    .project-details { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+    .detail { padding: 1.35rem 1.5rem; border-top: 4px solid transparent; border-image: linear-gradient(90deg, #c56d22, #b44a53, #793b74, #173c43) 1; background: #fff4f3; box-shadow: 0 12px 35px rgba(55, 33, 43, .07); }
+    .detail:nth-child(2) { background: #f4eff5; }
+    .detail:nth-child(3) { background: #edf4f4; }
+    .detail-label { margin: 0 0 .35rem; color: var(--accent); font-size: .68rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .detail-value { margin: 0; font-family: var(--serif); font-size: 1.2rem; }
+    .concept { color: #fff; background: #342632; text-align: center; }
+    .concept blockquote { max-width: 760px; margin: 1.3rem auto 0; color: #f2b34c; font-family: var(--serif); font-size: clamp(1.8rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.12; }
+    .concept p { max-width: 680px; margin: 1rem auto 0; color: #eadfe8; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem; margin-top: 2rem; }
+    .button { display: inline-block; min-width: 160px; padding: .8rem 1.1rem; border: 1px solid currentColor; color: #fff; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-align: center; text-decoration: none; text-transform: uppercase; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+    .button:hover { color: var(--accent); background: #fff; transform: translateY(-2px); }
+    .site-footer { display: flex; flex-direction: column; align-items: center; padding: 1.25rem; color: #ddd0da; background: #342632; font-size: .8rem; text-align: center; }
+    .site-footer p { width: 100%; margin: 0; }
+    @media (max-width: 760px) {
+      .site-header { min-height: 0; gap: 1rem; padding: 1rem 1.25rem; }
+      .menu-toggle { display: inline-flex; width: 2.75rem; height: 2.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 5px; margin-left: auto; padding: .55rem; border: 1px solid #fff; border-radius: 3px; color: #fff; background: transparent; cursor: pointer; }
+      .menu-toggle span { display: block; width: 1.2rem; height: 2px; background: currentColor; }
+      .site-nav { display: none; width: 100%; }
+      .site-nav.is-open { display: block; padding: .45rem 1rem .7rem; border: 1px solid rgba(41, 29, 29, .14); border-radius: 8px; background: var(--white); box-shadow: 0 14px 30px rgba(41, 29, 29, .16); }
+      .nav-links { display: grid; justify-content: stretch; gap: 0; margin: 0; padding: .6rem 0 0; border-top: 1px solid rgba(41, 29, 29, .35); }
+      .nav-links a { display: block; padding: .7rem 0; color: var(--ink); font-size: .72rem; }
+      .hero { min-height: 360px; padding: 8rem 1.25rem 3rem; }
+      .project-details { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">Divya Kandala</a>
+    <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation"><span></span><span></span><span></span></button>
+    <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="project-work.html" aria-current="page">My Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="project-title">
+      <div class="hero-content">
+        <p class="hero-kicker">Colorado Symphony · Poster Mailer</p>
+        <h1 id="project-title">Classics 2026</h1>
+        <p>A visual invitation to experience the Colorado Symphony.</p>
+      </div>
+    </section>
+    <section class="section project-intro" aria-labelledby="overview-title">
+      <div class="section-inner">
+        <h2 class="section-heading" id="overview-title">Project Overview</h2>
+        <div class="intro-copy">
+          <p>Project description placeholder — add your project blurb here when it is ready.</p>
+          <p>Use this space to describe your approach, audience, and design process.</p>
+        </div>
+        <div class="project-details" aria-label="Project details">
+          <article class="detail"><p class="detail-label">Client</p><p class="detail-value">Colorado Symphony</p></article>
+          <article class="detail"><p class="detail-label">Deliverable</p><p class="detail-value">Poster mailer</p></article>
+          <article class="detail"><p class="detail-label">Tools</p><p class="detail-value">Add tools and assets here</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section concept" aria-labelledby="concept-title">
+      <div class="section-inner">
+        <h2 class="section-heading" id="concept-title">Campaign Concept</h2>
+        <blockquote>“Our State, Your Symphony”</blockquote>
+        <p>Colorado Symphony Classics 2026 campaign · Add supporting project details here.</p>
+        <div class="actions"><a class="button" href="project-work.html">Back to My Work</a></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>© 2026 Divya Kandala · Creative work, research, and design.</p></footer>
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('#primary-navigation');
+    function setMenuOpen(isOpen) {
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+      siteNav.classList.toggle('is-open', isOpen);
+    }
+    menuButton.addEventListener('click', () => setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+    siteNav.addEventListener('click', event => { if (event.target.closest('a')) setMenuOpen(false); });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') { setMenuOpen(false); menuButton.focus(); }
+    });
+    window.matchMedia('(min-width: 761px)').addEventListener('change', event => { if (event.matches) setMenuOpen(false); });
+  </script>
+</body>
+</html>
